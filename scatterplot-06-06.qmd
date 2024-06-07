@@ -1,0 +1,26 @@
+---
+title: "Scatterplot-06-06"
+author: "Aashna"
+format: html
+execute: 
+  echo: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(primer.data)
+```
+
+```{r}
+connectedness |> 
+ drop_na |>
+   ggplot(mapping = aes(y = connectedness, x = population)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE)+
+  scale_x_log10(labels = scales::comma_format()) + 
+  labs(x = "Population", y = "Economic Connectedness",
+       title = "US County Populations versus Economic Connectedness", 
+       subtitle = "Population size does not matter to EC", caption = "Opportunity Insights")
+```
+
